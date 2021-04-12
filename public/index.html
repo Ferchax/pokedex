@@ -39,21 +39,21 @@
 				<div class="col-md-6">
 					<img class="avatar d-block mx-auto" ng-src="img/pokemons/{{pkmCtrl.pokemon.name | lowercase}}.jpg">	    
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6" ng-controller="TabsController as tabs">
 					<div class="nav nav-tabs nav-justified">
-						<li class="nav-item" ng-class="{ active:pkmCtrl.tab === 1 }">
-							<a class="nav-link" href="#" ng-click="pkmCtrl.selectTab(1)">Pokédex</a>
+						<li class="nav-item">
+							<a class="nav-link" ng-class="{active:tabs.tab === 1}" href="#" ng-click="tabs.selectTab(1)">Pokédex</a>
 						</li>
-              			<li class="nav-item" ng-class="{ active:pkmCtrl.tab === 2 }">
-							<a class="nav-link" href="#" ng-click="pkmCtrl.selectTab(2)">Stats</a>
+              			<li class="nav-item">
+							<a class="nav-link" ng-class="{active:tabs.tab === 2}" href="#" ng-click="tabs.selectTab(2)">Stats</a>
 						</li>
-              			<li class="nav-item" ng-class="{ active:pkmCtrl.tab === 3 }">
-							<a class="nav-link" href="#" ng-click="pkmCtrl.selectTab(3)">Evolution</a>
+              			<li class="nav-item" >
+							<a class="nav-link" ng-class="{active:tabs.tab === 3}" href="#" ng-click="tabs.selectTab(3)">Evolution</a>
 						</li>
 					</div>
 					<div class="tab-content">
 						<!-- Pokedex -->
-						<div ng-show="pkmCtrl.tab === 1">
+						<div ng-show="tabs.tab === 1">
 							<ul class="list-group">
 								<li class="list-group-item">
 									<strong>Type</strong>
@@ -66,11 +66,11 @@
 								</li>
 								<li class="list-group-item">
 									<strong>Height</strong>
-									<span class="pull-right">{{pkmCtrl.pokemon.height}}</span>
+									<span class="float-right">{{pkmCtrl.pokemon.height}}</span>
 								</li>
 								<li class="list-group-item">
 									<strong>Weight</strong>
-									<span class="pull-right">{{pkmCtrl.pokemon.weight}}</span>
+									<span class="float-right">{{pkmCtrl.pokemon.weight}}</span>
 								</li>
 								<li class="list-group-item">
 									<strong>Abilities</strong>
@@ -83,7 +83,7 @@
 							</ul>
 						</div>
 						<!-- Stats -->
-						<div ng-show="pkmCtrl.tab === 2">
+						<div ng-show="tabs.tab === 2">
 							<ul class="list-group">								
 								<li class="list-group-item">
 									<strong>HP</strong>
@@ -116,7 +116,7 @@
 							</ul>
 						</div>
 						<!-- Evolution -->
-						<div ng-show="pkmCtrl.tab === 3">
+						<div ng-show="tabs.tab === 3">
 							<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolution">
 								<a href="#">
 									<img ng-src="img/pokemons/{{pokemon | lowercase}}.jpg" alt="" width="160">
