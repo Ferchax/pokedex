@@ -40,17 +40,20 @@
 					<img class="avatar d-block mx-auto" ng-src="img/pokemons/{{pkmCtrl.pokemon.name | lowercase}}.jpg">	    
 				</div>
 				<div class="col-md-6">
-					<div class="nav flex-column nav-pills nav-justified" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-						<a class="nav-link active" id="v-pills-pokedex-tab" data-toggle="pill" href="#v-pills-pokedex" 
-							role="tab" aria-controls="v-pills-pokedex" aria-selected="true">Pokédex</a>
-						<a  class="nav-link" id="v-pills-stats-tab" data-toggle="pill" href="#v-pills-stats" 
-							role="tab" aria-controls="v-pills-stats" aria-selected="false">Stats</a>
-						<a class="nav-link" id="v-pills-evolution-tab" data-toggle="pill" href="#v-pills-evolution" 
-							role="tab" aria-controls="v-pills-evolution" aria-selected="false">Evolution</a>
+					<div class="nav nav-tabs nav-justified">
+						<li class="nav-item" ng-class="{ active:pkmCtrl.tab === 1 }">
+							<a class="nav-link" href="#" ng-click="pkmCtrl.selectTab(1)">Pokédex</a>
+						</li>
+              			<li class="nav-item" ng-class="{ active:pkmCtrl.tab === 2 }">
+							<a class="nav-link" href="#" ng-click="pkmCtrl.selectTab(2)">Stats</a>
+						</li>
+              			<li class="nav-item" ng-class="{ active:pkmCtrl.tab === 3 }">
+							<a class="nav-link" href="#" ng-click="pkmCtrl.selectTab(3)">Evolution</a>
+						</li>
 					</div>
-					<div class="tab-content" id="v-pills-tabContent">
+					<div class="tab-content">
 						<!-- Pokedex -->
-						<div class="tab-pane fade show active" id="v-pills-pokedex" role="tabpanel" aria-labelledby="v-pills-pokedex-tab">
+						<div ng-show="pkmCtrl.tab === 1">
 							<ul class="list-group">
 								<li class="list-group-item">
 									<strong>Type</strong>
@@ -80,7 +83,7 @@
 							</ul>
 						</div>
 						<!-- Stats -->
-						<div class="tab-pane fade" id="v-pills-stats" role="tabpanel" aria-labelledby="v-pills-stats-tab">
+						<div ng-show="pkmCtrl.tab === 2">
 							<ul class="list-group">								
 								<li class="list-group-item">
 									<strong>HP</strong>
@@ -113,7 +116,7 @@
 							</ul>
 						</div>
 						<!-- Evolution -->
-						<div class="tab-pane fade" id="v-pills-evolution" role="tabpanel" aria-labelledby="v-pills-evolution-tab">
+						<div ng-show="pkmCtrl.tab === 3">
 							<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolution">
 								<a href="#">
 									<img ng-src="img/pokemons/{{pokemon | lowercase}}.jpg" alt="" width="160">
@@ -129,7 +132,6 @@
 		<!-- /pokemon -->
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/combine/npm/jquery@3/dist/jquery.slim.min.js,npm/bootstrap@4"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>
