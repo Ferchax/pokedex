@@ -1,24 +1,135 @@
 <!DOCTYPE html>
 <html ng-app="pokedex">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Pokédex 2</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="js/app.js"></script>
-  </head>
-  <body>
-    <div ng-controller="PokemonController as pkmCtrl">
-      <h1>{{pkmCtrl.pokemon.name}} #{{pkmCtrl.pokemon.id}}</h1>
-      <h2>{{pkmCtrl.pokemon.species}}</h2>
-      <img src="img/{{pkmCtrl.pokemon.name}}.jpg">
-      <h2>Pokédex</h2>
-      <ul>
-        <li><strong>Type</strong> {{pkmCtrl.pokemon.type.join(', ')}}</li>
-        <li><strong>Weight</strong> 2'4" (0.71m)</li>
-        <li><strong>Height</strong> 15.2 lbs (6.9)</li>
-	<li><strong>Abilities</strong> {{pkmCtrl.pokemon.abilities.join(', ')}}</li>
-      </ul>
-    </div>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pokédex 2</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4/dist/simplex/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">	
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#"><img src="img/logo.png">Pokédex 2</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" 
+				aria-controls="navbarCollapse" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div id="navbarCollapse" class="collapse navbar-collapse">
+				<ul class="navbar-nav me-auto mb-2 mb-md-0">
+					<li class="nav-item"></li>
+					<li class="nav-item"></li>
+					<li class="nav-item"></li>
+				</ul>				
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<!-- pokemon -->
+		<div ng-controller="PokemonController as pkmCtrl">
+			<div class="border-bottom mb-2">
+				<h3>
+					{{pkmCtrl.pokemon.name}}
+					<small>{{pkmCtrl.pokemon.species}}</small>
+					<span class="badge badge-primary float-right">#{{pkmCtrl.pokemon.id}}</span>
+				</h3>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<img class="avatar d-block mx-auto" ng-src="img/pokemons/{{pkmCtrl.pokemon.name | lowercase}}.jpg">	    
+				</div>
+				<div class="col-md-6">
+					<div class="nav flex-column nav-pills nav-justified" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<a class="nav-link active" id="v-pills-pokedex-tab" data-toggle="pill" href="#v-pills-pokedex" 
+							role="tab" aria-controls="v-pills-pokedex" aria-selected="true">Pokédex</a>
+						<a  class="nav-link" id="v-pills-stats-tab" data-toggle="pill" href="#v-pills-stats" 
+							role="tab" aria-controls="v-pills-stats" aria-selected="false">Stats</a>
+						<a class="nav-link" id="v-pills-evolution-tab" data-toggle="pill" href="#v-pills-evolution" 
+							role="tab" aria-controls="v-pills-evolution" aria-selected="false">Evolution</a>
+					</div>
+					<div class="tab-content" id="v-pills-tabContent">
+						<!-- Pokedex -->
+						<div class="tab-pane fade show active" id="v-pills-pokedex" role="tabpanel" aria-labelledby="v-pills-pokedex-tab">
+							<ul class="list-group">
+								<li class="list-group-item">
+									<strong>Type</strong>
+									<span class="float-right">
+										<span class="badge badge-primary type type-{{type | lowercase}}" 
+											ng-repeat="type in pkmCtrl.pokemon.type">
+											{{ type }}
+										</span>
+									</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Height</strong>
+									<span class="pull-right">{{pkmCtrl.pokemon.height}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Weight</strong>
+									<span class="pull-right">{{pkmCtrl.pokemon.weight}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Abilities</strong>
+									<ul>
+										<li ng-repeat="ability in pkmCtrl.pokemon.abilities">
+											{{ ability }}
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<!-- Stats -->
+						<div class="tab-pane fade" id="v-pills-stats" role="tabpanel" aria-labelledby="v-pills-stats-tab">
+							<ul class="list-group">								
+								<li class="list-group-item">
+									<strong>HP</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.hp}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Attack</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.attack}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Defense</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.defense}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Special Attack</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats['sp.atk']}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Special Defense</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats['sp.def']}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Speed</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.speed}}</span>
+								</li>
+								<li class="list-group-item">
+									<strong>Total</strong>
+									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.total}}</span>
+								</li>
+							</ul>
+						</div>
+						<!-- Evolution -->
+						<div class="tab-pane fade" id="v-pills-evolution" role="tabpanel" aria-labelledby="v-pills-evolution-tab">
+							<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolution">
+								<a href="#">
+									<img ng-src="img/pokemons/{{pokemon | lowercase}}.jpg" alt="" width="160">
+									<p><strong>{{pokemon}}</strong></p>
+								</a>
+								<span ng-hide="$last" class="oi oi-arrow-thick-bottom"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /pokemon -->
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/combine/npm/jquery@3/dist/jquery.slim.min.js,npm/bootstrap@4"></script>
+	<script src="js/app.js"></script>
+</body>
 </html>
