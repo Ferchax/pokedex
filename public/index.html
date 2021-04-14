@@ -25,8 +25,8 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-		<!-- pokemon -->
+	<div class="container-fluid">
+		<!-- pokemon ctrl -->
 		<div ng-controller="PokemonController as pkmCtrl">
 			<div class="border-bottom mb-2">
 				<h3>
@@ -35,10 +35,11 @@
 					<span class="badge badge-primary float-right">#{{pkmCtrl.pokemon.id}}</span>
 				</h3>
 			</div>
-			<div class="row">
+			<div class="row mb-3">
 				<div class="col-md-6">
 					<img class="avatar d-block mx-auto" ng-src="img/pokemons/{{pkmCtrl.pokemon.name | lowercase}}.jpg">	    
 				</div>
+				<!-- tabs ctrl -->
 				<div class="col-md-6" ng-controller="TabsController as tabs">
 					<div class="nav nav-tabs nav-justified">
 						<li class="nav-item">
@@ -120,16 +121,56 @@
 							<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolution">
 								<a href="#">
 									<img ng-src="img/pokemons/{{pokemon | lowercase}}.jpg" alt="" width="160">
-									<p><strong>{{pokemon}}</strong></p>
+									<p class="mb-0"><strong>{{pokemon}}</strong></p>
 								</a>
 								<span ng-hide="$last" class="oi oi-arrow-thick-bottom"></span>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- /tabs ctrl -->
 			</div>
+			<!-- comments -->
+			<button class="btn btn-primary">Show comments <span class="badge badge-pill badge-secondary text-primary">2</span></button>
+			<div class="card mb-3">
+				<div class="card-header bg-primary lead text-white">
+					Comments <button class="close float-right" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="card-body">
+					<form class="form-horizontal" role="form">
+						<div class="form-group row">
+							<div class="col-sm-6">
+								<textarea placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control"></textarea>
+							</div>
+							<div class="col-sm-4 mb-2">
+								<input type="email" placeholder="Please enter your email address" class="form-control">
+								<div class="custom-control custom-checkbox mt-2">
+									<input type="checkbox" class="custom-control-input" id="anonymous">
+									<label class="custom-control-label" for="anonymous">Anonymous</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-primary btn-lg">Comment</button>
+							</div>
+						</div>
+					</form>
+					<blockquote class="blockquote">
+						<p class="mb-0">OMG Bulbasaur is AMAZING!!!</p>
+						<footer class="blockquote-footer">
+							Comment by <a href="mailto:pepe@pepe.com">pepe@pepe.com</a> on <span>Sep 12, 2014, 11:00:00 PM</span>
+						</footer>
+					</blockquote>
+					<blockquote class="blockquote">
+						<p class="mb-0">Nah, I hate it -_-</p>
+						<footer class="blockquote-footer">
+							Comment by <em>Anonymous</em> on <span>Sep 12, 2014, 11:00:00 PM</span>
+						</footer>
+					</blockquote>
+				</div>
+			</div>
+			<!-- /comments -->
 		</div>
-		<!-- /pokemon -->
+		<!-- /pokemon ctrl -->
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 	<script src="js/app.js"></script>
