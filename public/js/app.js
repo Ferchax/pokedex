@@ -2,7 +2,6 @@
   var app = angular.module('pokedex', [])
 
   app.controller('PokemonController', function() {
-
     this.pokemon = {
       id: "001",
       name: 'Bulbasaur',
@@ -25,11 +24,19 @@
   })
 
   app.controller('TabsController', function() {
-
     this.tab = 1
 
     this.selectTab = function(tab) {
       this.tab = tab
+    }
+  })
+
+  app.controller('CommentsController', function() {
+    this.comments = []
+    this.show = false
+    
+    this.toggle = function() {
+      this.show = !this.show
     }
   })
 
