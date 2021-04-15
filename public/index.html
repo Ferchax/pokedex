@@ -138,35 +138,32 @@
 						Comments <button class="close float-right" aria-label="Close" ng-click="cmtsCtrl.toggle()"><span aria-hidden="true">&times;</span></button>
 					</div>
 					<div class="card-body">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" ng-submit="cmtsCtrl.addComment()">
 							<div class="form-group row">
 								<div class="col-sm-6">
-									<textarea placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control"></textarea>
+									<textarea ng-model="cmtsCtrl.comment.body" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control"></textarea>
 								</div>
 								<div class="col-sm-4 mb-2">
-									<input type="email" placeholder="Please enter your email address" class="form-control">
+									<input type="email" ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous" placeholder="Please enter your email address" class="form-control">
 									<div class="custom-control custom-checkbox mt-2">
-										<input type="checkbox" class="custom-control-input" id="anonymous">
+										<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" class="custom-control-input" id="anonymous">
 										<label class="custom-control-label" for="anonymous">Anonymous</label>
 									</div>
 								</div>
 								<div class="col-sm-2">
-									<button class="btn btn-primary btn-lg">Comment</button>
+									<button type="submit" class="btn btn-primary btn-lg">Comment</button>
 								</div>
 							</div>
 						</form>
-						<blockquote class="blockquote">
-							<p class="mb-0">OMG Bulbasaur is AMAZING!!!</p>
+						<blockquote class="blockquote" ng-repeat="comment in cmtsCtrl.comments">
+							<p class="mb-0">{{comment.body}}</p>
 							<footer class="blockquote-footer">
-								Comment by <a href="mailto:pepe@pepe.com">pepe@pepe.com</a> on <span>Sep 12, 2014, 11:00:00 PM</span>
+								Comment by 
+								<a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>
+								<em ng-if="comment.anonymous">Anonymous</em>
+								on <span>{{comment.date | date : 'medium'}}</span>
 							</footer>
-						</blockquote>
-						<blockquote class="blockquote">
-							<p class="mb-0">Nah, I hate it -_-</p>
-							<footer class="blockquote-footer">
-								Comment by <em>Anonymous</em> on <span>Sep 12, 2014, 11:00:00 PM</span>
-							</footer>
-						</blockquote>
+						</blockquote>					
 					</div>
 				</div>
 			</div>
