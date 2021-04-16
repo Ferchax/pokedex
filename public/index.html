@@ -55,33 +55,7 @@
 					<div class="tab-content">
 						<!-- Pokedex -->
 						<div ng-show="tabs.tab === 1">
-							<ul class="list-group">
-								<li class="list-group-item">
-									<strong>Type</strong>
-									<span class="float-right">
-										<span class="badge badge-primary type type-{{type | lowercase}}" 
-											ng-repeat="type in pkmCtrl.pokemon.type">
-											{{ type }}
-										</span>
-									</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Height</strong>
-									<span class="float-right">{{pkmCtrl.pokemon.height}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Weight</strong>
-									<span class="float-right">{{pkmCtrl.pokemon.weight}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Abilities</strong>
-									<ul>
-										<li ng-repeat="ability in pkmCtrl.pokemon.abilities">
-											{{ ability }}
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<pokemon-data></pokemon-data>
 						</div>
 						<!-- Stats -->
 						<div ng-show="tabs.tab === 2">
@@ -138,13 +112,13 @@
 						Comments <button class="close float-right" aria-label="Close" ng-click="cmtsCtrl.toggle()"><span aria-hidden="true">&times;</span></button>
 					</div>
 					<div class="card-body">
-						<form class="form-horizontal" ng-submit="cmtsCtrl.addComment()">
+						<form name="commentsForm" class="form-horizontal" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()" novalidate>
 							<div class="form-group row">
 								<div class="col-sm-6">
-									<textarea ng-model="cmtsCtrl.comment.body" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control"></textarea>
+									<textarea ng-model="cmtsCtrl.comment.body" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control" required></textarea>
 								</div>
 								<div class="col-sm-4 mb-2">
-									<input type="email" ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous" placeholder="Please enter your email address" class="form-control">
+									<input type="email" ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous" placeholder="Please enter your email address" class="form-control" ng-required="!cmtsCtrl.comment.anonymous">
 									<div class="custom-control custom-checkbox mt-2">
 										<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" class="custom-control-input" id="anonymous">
 										<label class="custom-control-label" for="anonymous">Anonymous</label>

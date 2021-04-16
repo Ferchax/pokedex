@@ -116,3 +116,11 @@ body {
     background-color: #ee99ac;
     border: 1px solid #9b6470;
 }
+
+.ng-invalid.ng-dirty {
+    border-color: #d9230f;
+}
+
+.ng-valid.ng-dirty {
+    border-color: #468847;
+}
