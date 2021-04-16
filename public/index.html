@@ -29,15 +29,11 @@
 		<!-- pokemon ctrl -->
 		<div ng-controller="PokemonController as pkmCtrl">
 			<div class="border-bottom mb-2">
-				<h3>
-					{{pkmCtrl.pokemon.name}}
-					<small>{{pkmCtrl.pokemon.species}}</small>
-					<span class="badge badge-primary float-right">#{{pkmCtrl.pokemon.id}}</span>
-				</h3>
+				<pokemon-name></pokemon-name>
 			</div>
 			<div class="row mb-3">
-				<div class="col-md-6">
-					<img class="avatar d-block mx-auto" ng-src="img/pokemons/{{pkmCtrl.pokemon.name | lowercase}}.jpg">	    
+				<div class="col-md-6">					
+					<pokemon-image></pokemon-image>
 				</div>
 				<!-- tabs ctrl -->
 				<div class="col-md-6" ng-controller="TabsController as tabs">
@@ -59,46 +55,11 @@
 						</div>
 						<!-- Stats -->
 						<div ng-show="tabs.tab === 2">
-							<ul class="list-group">								
-								<li class="list-group-item">
-									<strong>HP</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.hp}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Attack</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.attack}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Defense</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.defense}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Special Attack</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats['sp.atk']}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Special Defense</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats['sp.def']}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Speed</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.speed}}</span>
-								</li>
-								<li class="list-group-item">
-									<strong>Total</strong>
-									<span class="badge badge-pill badge-primary float-right">{{pkmCtrl.pokemon.stats.total}}</span>
-								</li>
-							</ul>
+							<pokemon-stats></pokemon-stats>
 						</div>
 						<!-- Evolution -->
 						<div ng-show="tabs.tab === 3">
-							<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolution">
-								<a href="#">
-									<img ng-src="img/pokemons/{{pokemon | lowercase}}.jpg" alt="" width="160">
-									<p class="mb-0"><strong>{{pokemon}}</strong></p>
-								</a>
-								<span ng-hide="$last" class="oi oi-arrow-thick-bottom"></span>
-							</div>
+							<pokemon-evolution></pokemon-evolution>
 						</div>
 					</div>
 				</div>
