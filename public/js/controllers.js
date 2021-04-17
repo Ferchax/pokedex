@@ -1,5 +1,4 @@
-(function(){
-    
+(() => {    
     angular.module('pokedex.controllers', [])
     .controller('PokemonController', function() {
         this.pokemon = {
