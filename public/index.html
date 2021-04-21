@@ -26,52 +26,10 @@
 		</div>
 	</nav>
 	<div class="container-fluid">
-		<!-- pokemon ctrl -->
-		<div ng-controller="PokemonController as pkmCtrl">
-			<div class="border-bottom mb-2">
-				<pokemon-name></pokemon-name>
-			</div>
-			<div class="row mb-3">
-				<div class="col-md-6">					
-					<pokemon-image></pokemon-image>
-				</div>
-				<!-- tabs ctrl -->
-				<div class="col-md-6" ng-controller="TabsController as tabs">
-					<div class="nav nav-tabs nav-justified">
-						<li class="nav-item">
-							<a class="nav-link" ng-class="{active:tabs.tab === 1}" href="#" ng-click="tabs.selectTab(1)">Pokédex</a>
-						</li>
-              			<li class="nav-item">
-							<a class="nav-link" ng-class="{active:tabs.tab === 2}" href="#" ng-click="tabs.selectTab(2)">Stats</a>
-						</li>
-              			<li class="nav-item" >
-							<a class="nav-link" ng-class="{active:tabs.tab === 3}" href="#" ng-click="tabs.selectTab(3)">Evolution</a>
-						</li>
-					</div>
-					<div class="tab-content">
-						<!-- Pokedex -->
-						<div ng-show="tabs.tab === 1">
-							<pokemon-data></pokemon-data>
-						</div>
-						<!-- Stats -->
-						<div ng-show="tabs.tab === 2">
-							<pokemon-stats></pokemon-stats>
-						</div>
-						<!-- Evolution -->
-						<div ng-show="tabs.tab === 3">
-							<pokemon-evolution></pokemon-evolution>
-						</div>
-					</div>
-				</div>
-				<!-- /tabs ctrl -->
-			</div>
-			<!-- comments ctrl -->
-			<pokemon-comments></pokemon-comments>
-			<!-- /comments -->
-		</div>
-		<!-- /pokemon ctrl -->
+		<div ng-view></div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/angular-route.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
