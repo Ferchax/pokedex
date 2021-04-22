@@ -1,7 +1,6 @@
 (() => {
     angular.module('pokedex.filters', [])
     .filter('normalize', function () {
-      alert('1')
         return function (input) {          
           input = input
                   .replace('♀', 'f')
