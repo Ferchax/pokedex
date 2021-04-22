@@ -1,7 +1,12 @@
 (() => {    
     angular.module('pokedex.controllers', [])
       .controller('PokedexController', ['$scope', '$http', function($scope, $http) {
+        $scope.pokemons = []
 
+        $http.get('/pokemons.json')
+          .then(function(response) {
+            $scope.pokemons = response.data            
+          })
       }])  
       .controller('PokemonController', function() {
           this.pokemon = {
