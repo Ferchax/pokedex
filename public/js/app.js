@@ -16,8 +16,7 @@
       })
       .when('/pokedex/:id', {
         templateUrl: 'views/pokemon.html',
-        controller: 'PokemonController',
-        controllerAs: 'pkmCtrl'
+        controller: 'PokemonController'
       })
       .otherwise({
         redirectTo: '/'

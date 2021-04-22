@@ -3,23 +3,23 @@
         <strong>Type</strong>
         <span class="float-right">
             <span class="badge badge-primary type type-{{type | lowercase}}" 
-                ng-repeat="type in pkmCtrl.pokemon.type">
+                ng-repeat="type in pokemon.type">
                 {{ type }}
             </span>
         </span>
     </li>
     <li class="list-group-item">
         <strong>Height</strong>
-        <span class="float-right">{{pkmCtrl.pokemon.height}}</span>
+        <span class="float-right">{{pokemon.height}}</span>
     </li>
     <li class="list-group-item">
         <strong>Weight</strong>
-        <span class="float-right">{{pkmCtrl.pokemon.weight}}</span>
+        <span class="float-right">{{pokemon.weight}}</span>
     </li>
     <li class="list-group-item">
         <strong>Abilities</strong>
         <ul>
-            <li ng-repeat="ability in pkmCtrl.pokemon.abilities">
+            <li ng-repeat="ability in pokemon.abilities">
                 {{ ability }}
             </li>
         </ul>

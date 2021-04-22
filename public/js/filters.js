@@ -1,11 +1,12 @@
 (() => {
     angular.module('pokedex.filters', [])
     .filter('normalize', function () {
-        return function (input) {
+      alert('1')
+        return function (input) {          
           input = input
                   .replace('♀', 'f')
                   .replace('♂', 'm')
-                  .replace(/\W+/g, "")
+                  .replace(/\W+/g, '')
           return input.toLowerCase()
         }
     })
