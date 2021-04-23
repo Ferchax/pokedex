@@ -143,3 +143,7 @@ body {
 .pokemon pokemon-type {
     font-size: 22px;
 }
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    cursor: pointer;
+}
