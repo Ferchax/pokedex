@@ -14,7 +14,7 @@
         templateUrl: 'views/pokedex.html',
         controller: 'PokedexController'
       })
-      .when('/pokedex/:id', {
+      .when('/pokemon/:id', {
         templateUrl: 'views/pokemon.html',
         controller: 'PokemonController'
       })

@@ -124,3 +124,18 @@ body {
 .ng-valid.ng-dirty {
     border-color: #468847;
 }
+
+.pokemon {
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #d9230f;
+    border-radius: 20px;
+}
+
+.pokemon:hover {
+    border: 3px solid #d9230f;
+}
+
+.pokemon img {
+    width: 300px;
+}
