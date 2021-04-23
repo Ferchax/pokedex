@@ -1,14 +1,14 @@
-(() => {    
+(function() {    
     angular.module('pokedex.controllers', [])
-      .controller('PokedexController', ['$scope', '$http', function($scope, $http) {
-        $scope.pokemons = []
+      .controller('PokedexController', ['$scope', 'pokemonService', function($scope, pokemonService) {
 
-        $http.get('/pokemons.json')
-          .then(function(response) {
-            $scope.pokemons = response.data
-          })
+        pokemonService.all().then(function(data){
+          $scope.pokemons = data;
+        });
+        
       }])  
       .controller('PokemonController', ['$scope', function ($scope) {
+
           $scope.pokemon = {
             id: "001",
             name: 'Bulbasaur',
@@ -27,13 +27,16 @@
               total: 318
             },
             evolution: ['Bulbasaur', 'Ivysaur', 'Venusaur']
-          }
+          };
+
       }])
       .controller('TabsController', function() {
+
           this.tab = 1
       
           this.selectTab = function(tab) {
             this.tab = tab
           }
-      })
-})()
+
+      });
+})();
