@@ -1,5 +1,5 @@
-<!-- pokemon ctrl -->
-<div ng-controller="PokemonController as pkmCtrl">
+<!-- pokemon -->
+<div>
     <div class="border-bottom mb-2">
         <pokemon-name></pokemon-name>
     </div>
@@ -7,17 +7,17 @@
         <div class="col-md-6">					
             <pokemon-image></pokemon-image>
         </div>
-        <!-- tabs ctrl -->
+        <!-- tabs -->
         <div class="col-md-6" ng-controller="TabsController as tabs">
             <div class="nav nav-tabs nav-justified">
-                <li class="nav-item">
-                    <a class="nav-link" ng-class="{active:tabs.tab === 1}" ng-click="tabs.selectTab(1)">Pokédex</a>
+                <li class="nav-item" ng-class="{active:tabs.tab === 1}">
+                    <a class="nav-link" ng-click="tabs.selectTab(1)">Pokédex</a>
                 </li>
-                  <li class="nav-item">
-                    <a class="nav-link" ng-class="{active:tabs.tab === 2}" ng-click="tabs.selectTab(2)">Stats</a>
+                  <li class="nav-item" ng-class="{active:tabs.tab === 2}">
+                    <a class="nav-link" ng-click="tabs.selectTab(2)">Stats</a>
                 </li>
-                  <li class="nav-item" >
-                    <a class="nav-link" ng-class="{active:tabs.tab === 3}" ng-click="tabs.selectTab(3)">Evolution</a>
+                  <li class="nav-item" ng-class="{active:tabs.tab === 3}">
+                    <a class="nav-link" ng-click="tabs.selectTab(3)">Evolution</a>
                 </li>
             </div>
             <div class="tab-content">
@@ -35,10 +35,10 @@
                 </div>
             </div>
         </div>
-        <!-- /tabs ctrl -->
+        <!-- /tabs -->
     </div>
-    <!-- comments ctrl -->
+    <!-- comments -->
     <pokemon-comments></pokemon-comments>
     <!-- /comments -->
 </div>
-<!-- /pokemon ctrl -->
+<!-- /pokemon -->
