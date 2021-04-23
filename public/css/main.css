@@ -139,3 +139,7 @@ body {
 .pokemon img {
     width: 300px;
 }
+
+.pokemon pokemon-type {
+    font-size: 22px;
+}
