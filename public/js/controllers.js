@@ -5,7 +5,7 @@
 
         $http.get('/pokemons.json')
           .then(function(response) {
-            $scope.pokemons = response.data            
+            $scope.pokemons = response.data
           })
       }])  
       .controller('PokemonController', ['$scope', function ($scope) {
