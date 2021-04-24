@@ -4,10 +4,24 @@ body {
 
 .navbar-brand {
     font-weight: 800;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .navbar-brand img {
-    width: 24px;
+    width: 34px;
+}
+
+.page-header {
+    margin-top: -15px;
+}
+
+.page-header small {
+    margin-top: 4px;
+}
+
+.page-header small span{
+    vertical-align: bottom;
 }
 
 .avatar {
@@ -126,18 +140,33 @@ body {
 }
 
 .pokemon {
-    padding: 20px;
-    margin-bottom: 10px;
-    border: 1px solid #d9230f;
-    border-radius: 20px;
+    height: 350px;
 }
 
-.pokemon:hover {
-    border: 3px solid #d9230f;
+.pokemon h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 10px;
+}
+
+.pokemon h1 > small {
+    color: #ccc;
 }
 
 .pokemon img {
-    width: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 200px;
+    max-height: 220px;
+}
+
+.pokemon .card-body {
+    position: relative;
+    height: 250px;
 }
 
 .pokemon pokemon-type {
