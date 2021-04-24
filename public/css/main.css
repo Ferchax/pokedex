@@ -17,7 +17,8 @@ body {
 }
 
 .page-header small {
-    margin-top: 4px;
+    margin-top: 8px;
+    font-size: 16px;
 }
 
 .page-header small span{
@@ -25,7 +26,7 @@ body {
 }
 
 .avatar {
-    max-width: 480px;
+    max-width: 240px;
     margin-bottom: 20px;
 }
 
@@ -171,6 +172,29 @@ body {
 
 .pokemon pokemon-type {
     font-size: 22px;
+}
+
+.pokemon pokemon-name h3 {
+    font-size: 16px;
+    margin-bottom: -2px;
+}
+
+.pokemon pokemon-name h3 small {
+    font-size: 12px;    
+}
+
+.pokemon pokemon-name h3 span {
+    margin-top: 3px;  
+}
+
+.pokemon .card-header {
+    padding-left:10px;
+    padding-right:10px;
+}
+
+pokemon-evolution img {
+    max-width: 160px;
+    max-height: 180px;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
