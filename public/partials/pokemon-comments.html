@@ -1,18 +1,18 @@
-<button class="btn btn-primary mb-3" ng-hide="cmtsCtrl.show" ng-click="cmtsCtrl.toggle()">Show comments <span class="badge badge-pill badge-secondary text-primary">{{cmtsCtrl.comments.length}}</span></button>
-<div class="card mb-3" ng-show="cmtsCtrl.show">
+<button class="btn btn-primary mb-3" ng-hide="show" ng-click="toggle()">Show comments <span class="badge badge-pill badge-secondary text-primary">{{comments.length}}</span></button>
+<div class="card mb-3" ng-show="show">
     <div class="card-header bg-primary lead text-white">
-        Comments <button class="close float-right" aria-label="Close" ng-click="cmtsCtrl.toggle()"><span aria-hidden="true">&times;</span></button>
+        Comments <button class="close float-right" aria-label="Close" ng-click="toggle()"><span aria-hidden="true">&times;</span></button>
     </div>
     <div class="card-body">
-        <form name="commentsForm" class="form-horizontal" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()" novalidate>
+        <form name="commentsForm" class="form-horizontal" ng-submit="commentsForm.$valid && addComment()" novalidate>
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <textarea ng-model="cmtsCtrl.comment.body" placeholder="Please tell us what you think about {{pokemon.name}}" class="form-control" required></textarea>
+                    <textarea ng-model="comment.body" placeholder="Please tell us what you think about {{pokemon.name}}" class="form-control" required></textarea>
                 </div>
                 <div class="col-sm-4 mb-2">
-                    <input type="email" ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous" placeholder="Please enter your email address" class="form-control" ng-required="!cmtsCtrl.comment.anonymous">
+                    <input type="email" ng-model="comment.email" ng-disabled="comment.anonymous" placeholder="Please enter your email address" class="form-control" ng-required="!comment.anonymous">
                     <div class="custom-control custom-checkbox mt-2">
-                        <input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" class="custom-control-input" id="anonymous">
+                        <input ng-model="comment.anonymous" ng-change="anonymousChanged()" type="checkbox" class="custom-control-input" id="anonymous">
                         <label class="custom-control-label" for="anonymous">Anonymous</label>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </form>
-        <blockquote class="blockquote" ng-repeat="comment in cmtsCtrl.comments">
+        <blockquote class="blockquote" ng-repeat="comment in comments">
             <p class="mb-0">{{comment.body}}</p>
             <footer class="blockquote-footer">
                 Comment by 
