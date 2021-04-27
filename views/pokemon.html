@@ -1,0 +1,44 @@
+<!-- pokemon -->
+<div>
+    <div class="border-bottom mb-2">
+        <pokemon-name></pokemon-name>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">					
+            <pokemon-image></pokemon-image>
+        </div>
+        <!-- tabs -->
+        <div class="col-md-6" ng-controller="TabsController as tabs">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link" ng-class="{active:tabs.tab === 1}" data-toggle="tab" ng-click="tabs.selectTab(1)">Pokédex</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-class="{active:tabs.tab === 2}" data-toggle="tab" ng-click="tabs.selectTab(2)">Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-class="{active:tabs.tab === 3}" data-toggle="tab" ng-click="tabs.selectTab(3)">Evolution</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <!-- Pokedex -->
+                <div ng-show="tabs.tab === 1">
+                    <pokemon-data></pokemon-data>
+                </div>
+                <!-- Stats -->
+                <div ng-show="tabs.tab === 2">
+                    <pokemon-stats></pokemon-stats>
+                </div>
+                <!-- Evolution -->
+                <div ng-show="tabs.tab === 3">
+                    <pokemon-evolution></pokemon-evolution>
+                </div>
+            </div>
+        </div>
+        <!-- /tabs -->
+    </div>
+    <!-- comments -->
+    <pokemon-comments name="{{pokemon.name}}"></pokemon-comments>
+    <!-- /comments -->
+</div>
+<!-- /pokemon -->

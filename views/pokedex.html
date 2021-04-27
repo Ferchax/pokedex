@@ -1,0 +1,25 @@
+<div>
+    <div class="page-header">
+        <h3>Pokédex <small class="float-right">Showing <span class="badge badge-pill badge-primary">{{pokemons.length}}</span> Pokémons</small></h3>
+        <h3 ng-if="type"><span class="badge badge-primary type-{{type | lowercase}}">{{type}}</span></h3>
+    </div>
+    <div class="row" ng-repeat="group in groupped">
+        <div class="col-lg-3" ng-repeat="pokemon in group">
+            <div class="pokemon card border-primary mb-3">
+                <div class="card-header bg-primary text-white">
+                    <pokemon-name></pokemon-name>
+                </div>
+                <div class="card-body">
+                    <a href="/#!pokemon/{{pokemon.name | normalize}}">
+                        <pokemon-image></pokemon-image>
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <pokemon-type></pokemon-type>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
